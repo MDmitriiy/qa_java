@@ -1,10 +1,16 @@
 package com.example;
 import java.util.List;
 
-public class Lion {
+public class Lion implements FelineInterface{
     boolean hasMane;
     private FelineInterface feline;
-
+    public List<String> getFood(String type) throws Exception {
+        if ("Хищник".equals(type)) {
+            return List.of("Животные", "Птицы", "Рыба"); // Пример списка пищи
+        } else {
+            throw new Exception("Неизвестный тип животного");
+        }
+    }
     public Lion(String sex) throws Exception {
         if ("Самец".equals(sex)) {
             hasMane = true;

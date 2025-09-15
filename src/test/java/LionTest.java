@@ -26,14 +26,24 @@ public class LionTest {
     }
     @Test
     public void testGetKittens() {
-        when(felineMock.getKittens()).thenReturn(3);
-        assertEquals(3, lion.getKittens());
+        when(felineMock.getKittens()).thenReturn(1);
+        assertEquals(1, lion.getKittens());
     }
-
     @Test
     public void testGetFood() throws Exception {
         List<String> expectedFood = List.of("Животные", "Птицы", "Рыба");
         when(felineMock.getFood("Хищник")).thenReturn(expectedFood);
         assertEquals(expectedFood, lion.getFood());
+    }
+    @Test
+    public void testGetFoodWithValidType() throws Exception {
+        List<String> expectedFood = List.of("Животные", "Птицы", "Рыба");
+        assertEquals(expectedFood, lion.getFood("Хищник"));
+    }
+
+    @Test
+    public void testGetFoodWithInvalidTypeThrowsException() {
+        Exception exception = assertThrows(Exception.class, () -> lion.getFood("Травоядное"));
+        assertEquals("Неизвестный тип животного", exception.getMessage());
     }
 }
