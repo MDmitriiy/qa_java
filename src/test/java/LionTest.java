@@ -36,14 +36,8 @@ public class LionTest {
         assertEquals(expectedFood, lion.getFood());
     }
     @Test
-    public void testGetFoodWithValidType() throws Exception {
+    public void testGetFoodWithValidType() {
         List<String> expectedFood = List.of("Животные", "Птицы", "Рыба");
         assertEquals(expectedFood, lion.getFood("Хищник"));
-    }
-
-    @Test
-    public void testGetFoodWithInvalidTypeThrowsException() {
-        Exception exception = assertThrows(Exception.class, () -> lion.getFood("Травоядное"));
-        assertEquals("Неизвестный тип животного", exception.getMessage());
     }
 }

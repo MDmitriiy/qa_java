@@ -2,25 +2,17 @@ import com.example.Feline;
 import org.junit.jupiter.api.Test;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
+
 
 public class FelineTest {
     @Test
     public void testEatMeat() throws Exception {
         Feline feline = new Feline(); {
-           try
-            {
                 List<String> result = feline.eatMeat();
                 assertEquals(List.of("Животные", "Птицы", "Рыба"), result);
-            } catch(
-            Exception e)
-
-            {
-                e.printStackTrace();
-                fail("Unexpected exception occurred");
             }
         }
-    }
+
 
     @Test
         public void testGetFamily() {

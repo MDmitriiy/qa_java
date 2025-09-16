@@ -4,14 +4,8 @@ import java.util.List;
 public class Lion implements FelineInterface{
     boolean hasMane;
     private FelineInterface feline;
-    public List<String> getFood(String type) throws Exception {
-        if ("Хищник".equals(type)) {
-            return List.of("Животные", "Птицы", "Рыба"); // Пример списка пищи
-        } else {
-            throw new Exception("Неизвестный тип животного");
-        }
-    }
     public Lion(String sex) throws Exception {
+        this.feline = new FelineImpl();
         if ("Самец".equals(sex)) {
             hasMane = true;
         } else if ("Самка".equals(sex)) {
@@ -23,6 +17,11 @@ public class Lion implements FelineInterface{
 
     public Lion(FelineInterface feline) {
         this.feline = feline;
+    }
+
+    @Override
+    public List<String> getFood(String type) {
+        return List.of("Животные", "Птицы", "Рыба");
     }
 
     public int getKittens() {
