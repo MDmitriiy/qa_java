@@ -1,11 +1,11 @@
 package com.example;
 import java.util.List;
 
-public class Lion implements FelineInterface{
-    boolean hasMane;
+public class Lion {
+    private boolean hasMane;
     private FelineInterface feline;
-    public Lion(String sex) throws Exception {
-        this.feline = new FelineImpl();
+    public Lion(String sex, FelineInterface feline) throws Exception {
+        this.feline = feline;
         if ("Самец".equals(sex)) {
             hasMane = true;
         } else if ("Самка".equals(sex)) {
@@ -13,15 +13,6 @@ public class Lion implements FelineInterface{
         } else {
             throw new Exception("Используйте допустимые значения пола животного - самец или самка");
         }
-    }
-
-    public Lion(FelineInterface feline) {
-        this.feline = feline;
-    }
-
-    @Override
-    public List<String> getFood(String type) {
-        return List.of("Животные", "Птицы", "Рыба");
     }
 
     public int getKittens() {
